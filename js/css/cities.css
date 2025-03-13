@@ -1,0 +1,144 @@
+/* Стили для карточек городов */
+.cities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.city-card {
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.city-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.city-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    background-color: var(--light-bg);
+}
+
+.city-content {
+    padding: 1.5rem;
+}
+
+.city-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.city-description {
+    color: var(--text-color);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.city-stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+.city-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.city-button {
+    flex: 1;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+}
+
+.city-button.primary {
+    background-color: var(--secondary-color);
+    color: var(--white);
+}
+
+.city-button.primary:hover {
+    background-color: #2980b9;
+}
+
+.city-button.secondary {
+    background-color: var(--light-bg);
+    color: var(--text-color);
+}
+
+.city-button.secondary:hover {
+    background-color: #e0e0e0;
+}
+
+.city-status {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.city-status.locked {
+    background-color: var(--accent-color);
+    color: var(--white);
+}
+
+.city-status.available {
+    background-color: var(--secondary-color);
+    color: var(--white);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .cities-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+
+    .city-actions {
+        flex-direction: column;
+    }
+
+    .city-button {
+        width: 100%;
+    }
+}
+
+/* Анимации */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.city-card {
+    animation: fadeInUp 0.5s ease forwards;
+} 

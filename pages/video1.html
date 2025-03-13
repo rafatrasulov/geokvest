@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивное Видео 1</title>
+     <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="theme-switcher">
+        <button id="theme-toggle-button">🌙</button>
+    </div>
+     <div id="menu-toggle">
+          <span>&#9776;</span>
+    </div>
+    <div id="menu">
+          <ul>
+              <li><a href="index.html">Главное меню</a></li>
+            </ul>
+   </div>
+    <div class="container">
+        <h1>Интерактивное видео с выбором сюжета, вариативизацией</h1>
+        <div class="video-container">
+            <video id="main-video" width="640" height="360" controls>
+                <source type="video/mp4">
+                Ваш браузер не поддерживает видео.
+            </video>
+            <div class="controls">
+                 <button id="play-button">play</button>
+                 <button id="pause-button">pause</button>
+                  <button id="volume-up">Volume +</button>
+                 <button id="volume-down">Volume -</button>
+                 <input type="range" id="volume-slider" min="0" max="1" step="0.1" value="0.5">
+                 <button id="rewind-button">-5 sec</button>
+                <button id="back-button">Назад</button>
+                 <button id="forward-button">+5 sec</button>
+             </div>
+            <div id="test-container" class="hidden">
+                <p id="question">Здесь будет вопрос?</p>
+                <div class="options"></div>
+            </div>
+        </div>
+    </div>
+        <script src="script.js"></script>
+</body>
+</html>

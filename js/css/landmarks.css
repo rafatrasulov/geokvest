@@ -1,0 +1,52 @@
+/* landmarks.css */
+
+.landmark-card {
+    border: 1px solid #e0e0e0;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: height 0.3s ease; /* Плавная анимация высоты */
+    height: auto; /* Автоматическая высота */
+}
+
+.landmark-card-header {
+    padding: 15px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    display: flex; /* Используем flexbox для выравнивания */
+    justify-content: space-between; /* Распределяем элементы по краям */
+    align-items: center; /* Выравниваем элементы по вертикали */
+}
+
+.landmark-card-header h4 {
+    margin: 0;
+}
+
+.landmark-card-header .arrow {
+    transition: transform 0.3s ease; /* Анимация поворота стрелки */
+}
+
+.landmark-card.active .landmark-card-header .arrow {
+    transform: rotate(180deg); /* Поворот стрелки, когда карточка активна */
+}
+
+.landmark-card-content {
+    padding: 15px;
+    /* display: none;  Скрываем контент по умолчанию (уберем это) */
+    height: 0; /* Начальная высота контента = 0 */
+    overflow: hidden; /* Скрываем контент, который выходит за границы */
+    transition: height 0.3s ease; /* Плавное изменение высоты */
+}
+
+.landmark-card.active .landmark-card-content {
+    /* display: block;  Показываем контент, когда карточка активна (уберем это) */
+    height: auto; /* Автоматическая высота контента */
+}
+
+.landmark-card-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контрольная работа</title>
+    <link rel="stylesheet" href="csstest.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Контрольная работа 5Б КЛАСС</h1>
+        <p class="header-description">Тема: «Умножение и деление дробей. Нахождение части от целого и целого по его части.»</p>
+    </header>
+
+    <main>
+        <!-- Форма для ввода данных ученика -->
+        <section id="student-info">
+            <h2>Информация об ученике</h2>
+            <form id="studentForm">
+                <label for="name">Имя:</label>
+                <input type="text" id="name" name="name" required><br><br>
+
+                <label for="surname">Фамилия:</label>
+                <input type="text" id="surname" name="surname" required><br><br>
+
+                <label for="class">Класс:</label>
+                <input type="text" id="class" name="class" required><br><br>
+
+                <button type="button" id="startTest">Начать тест</button>
+            </form>
+        </section>
+
+        <!-- Убрал навигацию, чтобы упростить -->
+        <!--
+        <nav class="variant-navigation">
+            <ul>
+                <li><a href="#variant2">Вариант 2</a></li>
+                <li><a href="#variant3">Вариант 3</a></li>
+                <li><a href="#variant4">Вариант 4</a></li>
+                <li><a href="#variant5">Вариант 5</a></li>
+                <li><a href="#variant6">Вариант 6</a></li>
+                <li><a href="#variant7">Вариант 7</a></li>
+                <li><a href="#variant8">Вариант 8</a></li>
+            </ul>
+        </nav>
+        -->
+        <form id="testForm">
+            <!-- Скрытые поля для данных ученика (создаются динамически) -->
+            <!--  Варианты заданий ...  -->
+            <!-- Варианты заданий -->
+            <section class="variant" id="variant2">
+                <h2>Вариант 2</h2>
+                <ol>
+                    <li>Выполни действие
+                        <ol type="a">
+                            <li><span class="expression"><span class="mixed-number"><span class="whole">15</span><span class="fraction"><span class="frac"><span>1</span><span class="bottom">12</span></span></span></span> ∙ 6 = <input type="number" class="whole" name="var2_1a_whole"> <span class="fraction"><span class="frac"><span><input type="number" class="frac_top" name="var2_1a_num"></span><span class="bottom"><input type="number" class="frac_bottom" name="var2_1a_den"></span></span></span></span></li>
+                            <li><span class="expression"><span class="mixed-number"><span class="whole">4</span><span class="fraction"><span class="frac"><span>5</span><span class="bottom">8</span></span></span></span> ÷ 12 = <input type="number" class="whole" name="var2_1b_whole"> <span class="fraction"><span class="frac"><span><input type="number" class="frac_top" name="var2_1b_num"></span><span class="bottom"><input type="number" class="frac_bottom" name="var2_1b_den"></span></span></span></span></li>
+                            <li><span class="expression"><span class="mixed-number"><span class="whole">2</span><span class="fraction"><span class="frac"><span>7</span><span class="bottom">50</span></span></span></span> ∙ <span class="mixed-number"><span class="whole">15</span><span class="fraction"><span class="frac"><span>23</span><span class="bottom">40</span></span></span></span> = <input type="number" class="whole" name="var2_1c_whole"> <span class="fraction"><span class="frac"><span><input type="number" class="frac_top" name="var2_1c_num"></span><span class="bottom"><input type="number" class="frac_bottom" name="var2_1c_den"></span></span></span></span></li>
+                            <li><span class="expression"><span class="mixed-number"><span class="whole">3</span><span class="fraction"><span class="frac"><span>5</span><span class="bottom">9</span></span></span></span> ∙ <span class="mixed-number"><span class="whole">8</span><span class="fraction"><span class="frac"><span>2</span><span class="bottom">3</span></span></span></span> = <input type="number" class="whole" name="var2_1d_whole"> <span class="fraction"><span class="frac"><span><input type="number" class="frac_top" name="var2_1d_num"></span><span class="bottom"><input type="number" class="frac_bottom" name="var2_1d_den"></span></span></span></span></li>
+                            <li><span class="expression"><span class="mixed-number"><span class="whole">7</span><span class="fraction"><span class="frac"><span>3</span><span class="bottom">10</span></span></span></span> ÷ <span class="mixed-number"><span class="whole">6</span><span class="fraction"><span class="frac"><span>1</span><span class="bottom">5</span></span></span></span> = <input type="number" class="whole" name="var2_1e_whole"> <span class="fraction"><span class="frac"><span><input type="number" class="frac_top" name="var2_1e_num"></span><span class="bottom"><input type="number" class="frac_bottom" name="var2_1e_den"></span></span></span></span></li>
+                            <li><span class="expression">8 ∙ <span class="mixed-number"><span class="whole">15</span><span class="fraction"><span class="frac"><span>7</span><span class="bottom">25</span></span></span></span> = <input type="number" class="whole" name="var2_1f_whole"> <span class="fraction"><span class="frac"><span><input type="number" class="frac_top" name="var2_1f_num"></span><span class="bottom"><input type="number" class="frac_bottom" name="var2_1f_den"></span></span></span></span></li>
+                            <li><span class="expression"><span class="mixed-number"><span class="whole">6</span><span class="fraction"><span class="frac"><span>15</span><span class="bottom">16</span></span></span></span> ∙ <span class="mixed-number"><span class="whole">2</span><span class="fraction"><span class="frac"><span>3</span><span class="bottom">5</span></span></span></span> = <input type="number" class="whole" name="var2_1g_whole"> <span class="fraction"><span class="frac"><span><input type="number" class="frac_top" name="var2_1g_num"></span><span class="bottom"><input type="number" class="frac_bottom" name="var2_1g_den"></span></span></span></span></li>
+                            <li><span class="expression"><span class="mixed-number"><span class="whole">5</span><span class="fraction"><span class="frac"><span>1</span><span class="bottom">4</span></span></span></span> ÷ <span class="mixed-number"><span class="whole">2</span><span class="fraction"><span class="frac"><span>5</span><span class="bottom">12</span></span></span></span> = <input type="number" class="whole" name="var2_1h_whole"> <span class="fraction"><span class="frac"><span><input type="number" class="frac_top" name="var2_1h_num"></span><span class="bottom"><input type="number" class="frac_bottom" name="var2_1h_den"></span></span></span></span></li>
+                        </ol>
+                    </li>
+                    <li>У Маши было 36 руб., на покупку тетради она потратила <span class="frac"><span>2</span><span class="bottom">3</span></span> от этой суммы. Сколько денег осталось у девочки? <input type="number" name="var2_2"> руб.</li>
+                    <li>Площадь первого квадрата 35 см<sup>2</sup>, это составляет <span class="frac"><span>5</span><span class="bottom">8</span></span> площади второго квадрата. На сколько площадь одного квадрата меньше площади другого? <input type="number" name="var2_3"> см²</li>
+                    <li>Вычисли значение: <span class="expression"><span class="mixed-number"><span class="whole">32</span><span class="fraction"><span class="frac"><span>5</span><span class="bottom">12</span></span></span></span> ∙ <span class="mixed-number"><span class="whole">1</span><span class="fraction"><span class="frac"><span>1</span><span class="bottom">4</span></span></span></span> ÷ 2 - <span class="mixed-number"><span class="whole">5</span><span class="fraction"><span class="frac"><span>1</span><span class="bottom">3</span></span></span></span> ∙ <span class="mixed-number"><span class="whole">1</span><span class="fraction"><span class="frac"><span>1</span><span class="bottom">2</span></span></span></span> = <input type="number" class="whole" name="var2_4_whole"> <span class="fraction"><span class="frac"><span><input type="number" class="frac_top" name="var2_4_num"></span><span class="bottom"><input type="number" class="frac_bottom" name="var2_4_den"></span></span></span></span></li>
+                </ol>
+            </section>
+
+            <section class="variant" id="variant3">
+                <h2>Вариант 3</h2>
+                <ol>
+                    <li>Выполни действие
+                        <ol type="a">
+                            <li><span class="expression"><span class="mixed-number"><span class="whole">22</span><span class="fraction"><span class="frac"><span>3</span><span class="bottom">15</span></span></span></span> ∙ 5 = <input type="number" class="whole" name="var3_1a_whole"> <span class="fraction"><span class="frac"><span><input type="number" class="frac_top" name="var3_1a_num"></span><span class="bottom"><input type="number" class="frac_bottom" name="var3_1a_den"></span></span></span></span></li>
+                            <li><span class="expression"><span class="mixed-number"><span class="whole">7</span><span class="fraction"><span class="frac"><span>2</span><span class="bottom">9</span></span></span></span> ÷ 14 = <input type="number" class="whole" name="var3_1b_whole"> <span class="fraction"><span class="frac"><span><input type="number" class="frac_top" name="var3_1b_num"></span><span class="bottom"><input type="number" class="frac_bottom" name="var3_1b_den"></span></span></span></span></li>
+                            <li><span class="expression"><span class="mixed-number"><span class="whole">5</span><span class="fraction"><span class="frac"><span>5</span><span class="bottom">100</span></span></span></span> ∙ <span class="mixed-number"><span class="whole">12</span><span class="fraction"><span class="frac"><span>11</span><span class="bottom">15</span></span></span></span> = <input type="number" class="whole" name="var3_1c_whole"> <span class="fraction"><span class="frac"><span><input type="number" class="frac_top" name="var3_1c_num"></span><span class="bottom"><input type="number" class="frac_bottom" name="var3_1c_den"></span></span></span></span></li>
+                            <li><span class="expression"><span class="mixed-number"><span class="whole">1</span><span class="fraction"><span class="frac"><span>3</span><span class="bottom">7</span></span></span></span> ∙ <span class="mixed-number"><span class="whole">9</span><span class="fraction"><span class="frac"><span>1</span><span class="bottom">6</span></span></span></span> = <input type="number" class="whole" name="var3_1d_whole"> <span class="fraction"><span class="frac"><span><input type="number" class="frac_top" name="var3_1d_num"></span><span class="bottom"><input type="number" class="frac_bottom" name="var3_1d_den"></span></span></span></span></li>
+                            <li><span class="expression"><span class="mixed-number"><span class="whole">3</span><span class="fraction"><span class="frac"><span>2</span><span class="bottom">5</span></span></span></span> ÷ <span class="mixed-number"><span class="whole">4</span><span class="fraction"><span class="frac"><span>3</span><span class="bottom">10</span></span></span></span> = <input type="number" class="whole" name="var3_1e_whole"> <span class="fraction"><span class="frac"><span><input type="number" class="frac_top" name="var3_1e_num"></span><span class="bottom"><input type="number" class="frac_bottom" name="var3_1e_den"></span></span></span></span></li>
+                            <li><span class="expression">10 ∙ <span class="mixed-number"><span class="whole">11</span><span class="fraction"><span class="frac"><span>1</span><span class="bottom">5</span></span></span></span> = <input type="number" class="whole" name="var3_1f_whole"> <span class="fraction"><span class="frac"><span><input type="number" class="frac_top" name="var3_1f_num"></span><span class="bottom"><input type="number" class="frac_bottom" name="var3_1f_den"></span></span></span></span></li>
+                            <li><span class="expression"><span class="mixed-number"><span class="whole">9</span><span class="fraction"><span class="frac"><span>1</span><span class="bottom">12</span></span></span></span> ∙ <span class="mixed-number"><span class="whole">2</span><span class="fraction"><span class="frac"><span>2</span><span class="bottom">3</span></span></span></span> = <input type="number" class="whole" name="var3_1g_whole"> <span class="fraction"><span class="frac"><span><input type="number" class="frac_top" name="var3_1g_num"></span><span class="bottom"><input type="number" class="frac_bottom" name="var3_1g_den"></span></span></span></span></li>
+                            <li><span class="expression"><span class="mixed-number"><span class="whole">7</span><span class="fraction"><span class="frac"><span>5</span><span class="bottom">6</span></span></span></span> ÷ <span class="mixed-number"><span class="whole">3</span><span class="fraction"><span class="frac"><span>1</span><span class="bottom">3</span></span></span></span> = <input type="number" class="whole" name="var3_1h_whole"> <span class="fraction"><span class="frac"><span><input type="number" class="frac_top" name="var3_1h_num"></span><span class="bottom"><input type="number" class="frac_bottom" name="var3_1h_den"></span></span></span></span></li>
+                        </ol>
+                    </li>
+                    <li>У Коли было 48 руб., на покупку карандаша он потратил <span class="frac"><span>5</span><span class="bottom">6</span></span> от этой суммы. Сколько денег осталось у мальчика? <input type="number" name="var3_2"> руб.</li>
+                    <li>Площадь первого треугольника 42 см<sup>2</sup>, это составляет <span class="frac"><span>6</span><span class="bottom">11</span></span> площади второго треугольника. На сколько площадь одного треугольника меньше площади другого? <input type="number" name="var3_3"> см²</li>
+                    <li>Вычисли значение: <span class="expression"><span class="mixed-number"><span class="whole">41</span><span class="fraction"><span class="frac"><span>1</span><span class="bottom">10</span></span></span></span> ∙ <span class="mixed-number"><span class="whole">2</span><span class="fraction"><span class="frac"><span>1</span><span class="bottom">5</span></span></span></span> ÷ 3 - <span class="mixed-number"><span class="whole">2</span><span class="fraction"><span class="frac"><span>1</span><span class="bottom">4</span></span></span></span> ∙ <span class="mixed-number"><span class="whole">2</span><span class="fraction"><span class="frac"><span>1</span><span class="bottom">2</span></span></span></span> = <input type="number" class="whole" name="var3_4_whole"> <span class="fraction"><span class="frac"><span><input type="number" class="frac_top" name="var3_4_num"></span><span class="bottom"><input type="number" class="frac_bottom" name="var3_4_den"></span></span></span></span></li>
+                </ol>
+            </section>
+
+            <section class="variant" id="variant4">
+                <h2>Вариант 4</h2>
+                <ol>
+                    <li>Выполни действие
+                        <ol type="a">
+                            <li><span class="expression"><span class="mixed-number"><span class="whole">16</span><span class="fraction"><span class="frac"><span>1</span><span class="bottom">8</span></span></span></span> ∙ 4 = <input type="number" class="whole" name="var4_1a_whole"> <span class="fraction"><span class="frac"><span><input type="number" class="frac_top" name="var4_1a_num"></span><span class="bottom"><input type="number" class="frac_bottom" name="var4_1a_den"></span></span></span></span></li>
+                            <li><span class="expression"><span class="mixed-number"><span class="whole">5</span><span class="fraction"><span class="frac"><span>3</span><span class="bottom">5</span></span></span></span> ÷ 15 = <input type="number" class="whole" name="var4_1b_whole"> <span class="fraction"><span class="frac"><span><input type="number" class="frac_top" name="var4_1b_num"></span><span class="bottom"><input type="number" class="frac_bottom" name="var4_1b_den"></span></span></span></span></li>
+                            <li><span class="expression"><span class="mixed-number"><span class="whole">3</span><span class="fraction"><span class="frac"><span>1</span><span class="bottom">20</span></span></span></span> ∙ <span class="mixed-number"><span class="whole">18</span><span class="fraction"><span class="frac"><span>5</span><span class="bottom">8</span></span></span></span> = <input type="number" class="whole" name="var4_1c_whole"> <span class="fraction"><span class="frac"><span><input type="number" class="frac_top" name="var4_1c_num"></span><span class="bottom"><input type="number" class="frac_bottom" name="var4_1c_den"></span></span></span></span></li>
+                            <li><span class="expression"><span class="mixed-number"><span class="whole">2</span><span class="fraction"><span class="frac"><span>1</span><span class="bottom">4</span></span></span></span> ∙ <span class="mixed-number"><span class="whole">7</span><span class="fraction"><span class="frac"><span>3</span><span class="bottom">5</span></span></span></span> = <input type="number" class="whole" name="var4_1d_whole"> <span class="fraction"><span class="frac"><span><input type="number" class="frac_top" name="var4_1d_num"></span><span class="bottom"><input type="number" class="frac_bottom" name="var4_1d_den"></span></span></span></span></li>
+                            <li><span class="expression"><span class="mixed-number"><span class="whole">6</span><span class="fraction"><span class="frac"><span>1</span><span class="bottom">2</span></span></span></span> ÷ <span class="mixed-number"><span class="whole">5</span><span class="fraction"><span class="frac"><span>2</span><span class="bottom">3</span></span></span></span> = <input type="number" class="whole" name="var4_1e_whole"> <span class="fraction"><span class="frac"><span><input type="number" class="frac_top" name="var4_1e_num"></span><span class="bottom"><input type="number" class="frac_bottom" name="var4_1e_den"></span></span></span></span></li>
+                            <li><span class="expression">9 ∙ <span class="mixed-number"><span class="whole">14</span><span class="fraction"><span class="frac"><span>1</span><span class="bottom">2</span></span></span></span> = <input type="number" class="whole" name="var4_1f_whole"> <span class="fraction"><span class="frac"><span><input type="number" class="frac_top" name="var4_1f_num"></span><span class="bottom"><input type="number" class="frac_bottom" name="var4_1f_den"></span></span></span></span></li>
+                            <li><span class="expression"><span class="mixed-number"><span class="whole">7</span><span class="fraction"><span class="frac"><span>1</span><span class="bottom">10</span></span></span></span> ∙ <span class="mixed-number"><span class="whole">3</span><span class="fraction"><span class="frac"><span>3</span><span class="bottom">4</span></span></span></span> = <input type="number" class="whole" name="var4_1g_whole"> <span class="fraction"><span class="frac"><span><input type="number" class="frac_top" name="var4_1g_num"></span><span class="bottom"><input type="number" class="frac_bottom" name="var4_1g_den"></span></span></span></span></li>
+                            <li><span class="expression"><span class="mixed-number"><span class="whole">6</span><span class="fraction"><span class="frac"><span>2</span><span class="bottom">3</span></span></span></span> ÷ <span class="mixed-number"><span class="whole">4</span><span class="fraction"><span class="frac"><span>1</span><span class="bottom">6</span></span></span></span> = <input type="number" class="whole" name="var4_1h_whole"> <span class="fraction"><span class="frac"><span><input type="number" class="frac_top" name="var4_1h_num"></span><span class="bottom"><input type="number" class="frac_bottom" name="var4_1h_den"></span></span></span></span></li>
+                        </ol>
+                    </li>
+                    <li>У Лены было 50 руб., на покупку блокнота она потратила <span class="frac"><span>2</span><span class="bottom">5</span></span> от этой суммы. Сколько денег осталось у девочки? <input type="number" name="var4_2"> руб.</li>
+                    <li>Площадь первого круга 49 см<sup>2</sup>, это составляет <span class="frac"><span>7</span><span class="bottom">9</span></span> площади второго круга. На сколько площадь одного круга меньше площади другого? <input type="number" name="var4_3"> см²</li>
+                    <li>Вычисли значение: <span class="expression"><span class="mixed-number"><span class="whole">43</span><span class="fraction"><span class="frac"><span>1</span><span class="bottom">3</span></span></span></span> ∙ <span class="mixed-number"><span class="whole">1</span><span class="fraction"><span class="frac"><span>1</span><span class="bottom">6</span></span></span></span> ÷ 4 - <span class="mixed-number"><span class="whole">3</span><span class="fraction"><span class="frac"><span>1</span><span class="bottom">2</span></span></span></span> ∙ <span class="mixed-number"><span class="whole">1</span><span class="fraction"><span class="frac"><span>1</span><span class="bottom">4</span></span></span></span> = <input type="number" class="whole" name="var4_4_whole"> <span class="fraction"><span class="frac"><span><input type="number" class="frac_top" name="var4_4_num"></span><span class="bottom"><input type="number" class="frac_bottom" name="var4_4_den"></span></span></span></span></li>
+                </ol>
+            </section>
+
+            <button type="button" id="checkButton">Проверить ответы</button>
+        </form>
+
+        <div id="result"></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Контрольная работа</p>
+    </footer>
+</div>
+<script src="script.js"></script>
+<script src="test.js"></script>
+</body>
+</html>

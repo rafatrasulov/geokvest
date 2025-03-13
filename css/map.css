@@ -1,0 +1,130 @@
+.map-container {
+    display: flex;
+    height: calc(100vh - 140px);
+    background: #fff;
+}
+
+#map {
+    flex: 1;
+    height: 100%;
+    z-index: 1;
+}
+
+.map-sidebar {
+    width: 300px;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-left: 1px solid #ddd;
+    overflow-y: auto;
+}
+
+.map-sidebar h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+.city-list {
+    margin-bottom: 2rem;
+}
+
+.city-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.city-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.city-item.locked {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.city-icon {
+    width: 32px;
+    height: 32px;
+    margin-right: 1rem;
+}
+
+.city-name {
+    flex: 1;
+    font-weight: 500;
+}
+
+.city-status {
+    width: 24px;
+    height: 24px;
+}
+
+.unlock-code {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.unlock-code h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.unlock-code input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.unlock-code button {
+    width: 100%;
+    padding: 0.8rem;
+    background: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.unlock-code button:hover {
+    background: #45a049;
+}
+
+/* Стили для маркеров на карте */
+.city-marker {
+    width: 32px;
+    height: 32px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.city-marker.locked {
+    filter: grayscale(100%);
+}
+
+@media (max-width: 768px) {
+    .map-container {
+        flex-direction: column;
+    }
+
+    .map-sidebar {
+        width: 100%;
+        height: 300px;
+    }
+
+    #map {
+        height: calc(100vh - 440px);
+    }
+} 

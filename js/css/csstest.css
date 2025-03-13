@@ -1,0 +1,224 @@
+/* Общие стили */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* Стили для шапки */
+header {
+    background: #333;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+.header-description {
+    font-style: italic;
+    font-size: 1.1rem;
+}
+
+/* Стили для навигации */
+.variant-navigation {
+    background: #eee;
+    padding: 0.5rem 0;
+    margin-bottom: 20px;
+}
+
+.variant-navigation ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: center;
+}
+
+.variant-navigation li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.variant-navigation a {
+    color: #333;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #ddd;
+    transition: background-color 0.3s ease;
+}
+
+.variant-navigation a:hover {
+    background-color: #ccc;
+}
+
+/* Стили для основных секций с вариантами */
+main {
+    padding: 1rem 0;
+}
+
+.variant {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: none; /* Скрываем все варианты по умолчанию */
+}
+
+#student-info {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#student-info h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #333;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 5px;
+}
+
+#student-info label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#student-info input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.variant h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #333;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 5px;
+}
+
+.variant ol {
+    padding-left: 20px;
+}
+
+.variant ol li {
+    margin-bottom: 10px;
+}
+
+/* Стили для дробей */
+.frac {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.frac span {
+    display: block;
+}
+
+.frac .bottom {
+    border-top: 1px solid #000;
+}
+
+/* Стили для смешанных чисел */
+.mixed-number {
+    display: inline-block;
+}
+
+.mixed-number .whole {
+    font-size: 1.2em;
+    margin-right: 0.2em;
+}
+
+/* Стили для полей ввода */
+input[type="number"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 4em; /*  Задаем ширину полей ввода */
+    box-sizing: border-box;  /* Учитываем border и padding в ширине */
+    margin: 0 0.2em; /* Добавляем отступ */
+}
+
+/* Стили для кнопки */
+#checkButton, #startTest {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.1em;
+    display: block; /* Располагаем кнопку на отдельной строке */
+    margin: 20px auto; /* Центрируем кнопку по горизонтали и добавляем отступ */
+    width: fit-content; /*  Чтобы кнопка занимала столько места, сколько нужно ее содержимому */
+}
+
+#checkButton:hover, #startTest:hover {
+    background-color: #3e8e41;
+}
+
+/* Стили для футера */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 20px;
+}
+
+/* Стили для блока результатов */
+#result {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    font-size: 1.1em;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .variant-navigation li {
+        display: block;
+        margin: 5px 0;
+    }
+
+    .variant {
+        padding: 15px;
+    }
+}
+
+/* Стиль для отступа выражений */
+.expression {
+    margin-bottom: 0.5em;
+}

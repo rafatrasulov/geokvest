@@ -1,0 +1,348 @@
+.cities-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.cities-title {
+    font-size: 2.5rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.cities-filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    gap: 1rem;
+}
+
+.search-box {
+    display: flex;
+    gap: 0.5rem;
+    flex: 1;
+    max-width: 500px;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.search-button {
+    padding: 0.8rem 1.5rem;
+    background: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.search-button:hover {
+    background: #45a049;
+}
+
+.filter-options select {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    min-width: 200px;
+}
+
+.cities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.city-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.city-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.city-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.city-content {
+    padding: 1.5rem;
+}
+
+.city-name {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.city-description {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.city-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.city-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.city-button {
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.city-button.primary {
+    background: #4caf50;
+    color: white;
+}
+
+.city-button.primary:hover {
+    background: #45a049;
+}
+
+.city-button.secondary {
+    background: #f5f5f5;
+    color: #999;
+    border: none;
+    cursor: not-allowed;
+}
+
+.city-status {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.city-status.available {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.city-status.locked {
+    background: #ffebee;
+    color: #c62828;
+}
+
+@media (max-width: 768px) {
+    .cities-container {
+        padding: 1rem;
+    }
+
+    .cities-title {
+        font-size: 2rem;
+    }
+
+    .cities-filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-box {
+        max-width: none;
+    }
+
+    .filter-options select {
+        width: 100%;
+    }
+
+    .cities-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Секция городов */
+.cities-section {
+    padding: 4rem 0;
+    background: var(--white);
+}
+
+.cities-section h2 {
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.cities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 0 1rem;
+}
+
+.city-card {
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.city-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.city-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    background-color: var(--light-bg);
+}
+
+.city-content {
+    padding: 1.5rem;
+}
+
+.city-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+.city-description {
+    color: var(--text-color);
+    opacity: 0.8;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.city-stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--text-color);
+    opacity: 0.8;
+    margin-bottom: 1rem;
+}
+
+.city-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.city-button {
+    flex: 1;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+}
+
+.city-button.primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.city-button.primary:hover {
+    background-color: #45a049;
+}
+
+.city-button.secondary {
+    background-color: var(--light-bg);
+    color: var(--text-color);
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.city-status {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.city-status.locked {
+    background-color: var(--accent-color);
+    color: var(--white);
+}
+
+.city-status.available {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .cities-section {
+        padding: 2rem 0;
+    }
+
+    .cities-section h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .cities-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
+
+    .city-actions {
+        flex-direction: column;
+    }
+
+    .city-button {
+        width: 100%;
+    }
+}
+
+/* Анимации */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.city-card {
+    animation: fadeInUp 0.5s ease forwards;
+} 

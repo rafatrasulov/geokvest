@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ГеоКвест по ХМАО-Югре - <span id="city-name">Город</span></title>
+    <link rel="stylesheet" href="../../js/css/style.css">
+    <link rel="stylesheet" href="../../js/css/city.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>ГеоКвест по ХМАО-Югре</h1>
+        <nav>
+            <a href="../../index.html">Главная</a>
+            <a href="stations.html">Станции</a>
+            <a href="../news/index.html">Новости</a>
+            <a href="../feedback/index.html">Обратная связь</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="city-header">
+            <h2 id="city-title">Название города</h2>
+            <div class="mode-badge" id="mode-badge">Режим: <span id="current-mode">Загрузка...</span></div>
+        </div>
+
+        <div class="city-content">
+            <section class="city-intro">
+                <div class="city-video">
+                    <!-- Видео-презентация города -->
+                </div>
+                <div class="city-description">
+                    <h3>О городе</h3>
+                    <p id="city-description">Описание города...</p>
+                </div>
+            </section>
+
+            <section class="quest-content">
+                <div class="quest-progress">
+                    <h3>Прогресс прохождения</h3>
+                    <div class="progress-bar">
+                        <div class="progress" id="quest-progress"></div>
+                    </div>
+                    <p>Задания: <span id="quest-counter">0/0</span></p>
+                </div>
+
+                <div class="quest-tasks">
+                    <!-- Задания будут добавлены динамически -->
+                </div>
+            </section>
+
+            <section class="landmarks">
+                <h3>Достопримечательности</h3>
+                <div class="landmarks-grid">
+                    <!-- Достопримечательности будут добавлены динамически -->
+                </div>
+            </section>
+        </div>
+
+        <div class="completion-modal" id="completionModal">
+            <div class="modal-content">
+                <h3>Поздравляем!</h3>
+                <p>Вы успешно завершили все задания!</p>
+                <div class="code-reward">
+                    <p>Ваш код для разблокировки следующей станции:</p>
+                    <div class="code-display" id="rewardCode"></div>
+                </div>
+                <button id="copyCode">Копировать код</button>
+                <button id="closeModal">Закрыть</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 ГеоКвест по ХМАО-Югре</p>
+    </footer>
+
+    <script src="../../js/modules/city.js"></script>
+    <script src="../../js/modules/quest.js"></script>
+    <script src="../../js/modules/landmarks.js"></script>
+    <script src="../../js/modules/main.js"></script>
+</body>
+</html> 

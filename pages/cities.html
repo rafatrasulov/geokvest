@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Города - ГеоКвест по ХМАО-Югре</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/cities.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href="../index.html" class="nav-logo">ГеоКвест</a>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Главная</a></li>
+                <li><a href="cities.html">Города</a></li>
+                <li><a href="quests.html">Квесты</a></li>
+                <li><a href="achievements.html">Достижения</a></li>
+                <li><a href="profile.html">Профиль</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main">
+        <div class="cities-container">
+            <h1 class="cities-title">Города ХМАО-Югры</h1>
+            <div class="cities-filters">
+                <div class="search-box">
+                    <input type="text" id="citySearch" placeholder="Поиск города...">
+                    <button type="button" class="search-button">Поиск</button>
+                </div>
+                <div class="filter-options">
+                    <select id="sortCities">
+                        <option value="name">По названию</option>
+                        <option value="population">По населению</option>
+                        <option value="founded">По году основания</option>
+                    </select>
+                </div>
+            </div>
+            <div class="cities-grid">
+                <!-- Здесь будут карточки городов -->
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <p>&copy; 2024 ГеоКвест по ХМАО-Югре. Все права защищены.</p>
+            </div>
+            <div class="footer-links">
+                <a href="about.html">О проекте</a>
+                <a href="contacts.html">Контакты</a>
+                <a href="privacy.html">Конфиденциальность</a>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="../js/modules/cities-list.js"></script>
+</body>
+</html> 

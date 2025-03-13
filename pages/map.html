@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карта городов - ГеоКвест по ХМАО-Югре</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/map.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href="../index.html" class="nav-logo">ГеоКвест</a>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Главная</a></li>
+                <li><a href="cities.html">Города</a></li>
+                <li><a href="quests.html">Квесты</a></li>
+                <li><a href="achievements.html">Достижения</a></li>
+                <li><a href="profile.html">Профиль</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main">
+        <div class="map-container">
+            <div id="map"></div>
+            <div class="map-sidebar">
+                <h2>Города ХМАО-Югры</h2>
+                <div class="city-list">
+                    <!-- Здесь будет список городов -->
+                </div>
+                <div class="unlock-code">
+                    <h3>Разблокировать город</h3>
+                    <input type="text" id="unlockCode" placeholder="Введите код">
+                    <button id="unlockButton">Разблокировать</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <p>&copy; 2024 ГеоКвест по ХМАО-Югре. Все права защищены.</p>
+            </div>
+            <div class="footer-links">
+                <a href="about.html">О проекте</a>
+                <a href="contacts.html">Контакты</a>
+                <a href="privacy.html">Конфиденциальность</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script type="module" src="../js/modules/map.js"></script>
+</body>
+</html> 
