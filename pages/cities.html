@@ -22,15 +22,8 @@
     </header>
 
     <main class="main">
-        <div class="mode-switch">
-            <div class="mode-switch__container">
-                <button class="mode-switch__button mode-switch__button--learning active">Обучающий режим</button>
-                <button class="mode-switch__button mode-switch__button--control">Контрольный режим</button>
-            </div>
-        </div>
-
-        <div class="cities-container content-learning active">
-            <h1 class="cities-title">Города ХМАО-Югры - Обучающий режим</h1>
+        <div class="cities-container">
+            <h1 class="cities-title">Города ХМАО-Югры</h1>
             <div class="cities-filters">
                 <div class="search-box">
                     <input type="text" id="citySearch" placeholder="Поиск города...">
@@ -45,27 +38,7 @@
                 </div>
             </div>
             <div class="cities-grid">
-                <!-- Здесь будут карточки городов для обучающего режима -->
-            </div>
-        </div>
-        
-        <div class="cities-container content-control">
-            <h1 class="cities-title">Города ХМАО-Югры - Контрольный режим</h1>
-            <div class="cities-filters">
-                <div class="search-box">
-                    <input type="text" id="citySearchControl" placeholder="Поиск города...">
-                    <button type="button" class="search-button">Поиск</button>
-                </div>
-                <div class="filter-options">
-                    <select id="sortCitiesControl">
-                        <option value="name">По названию</option>
-                        <option value="population">По населению</option>
-                        <option value="founded">По году основания</option>
-                    </select>
-                </div>
-            </div>
-            <div class="cities-grid">
-                <!-- Здесь будут карточки городов для контрольного режима -->
+                <!-- Здесь будут карточки городов -->
             </div>
         </div>
     </main>

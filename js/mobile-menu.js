@@ -94,38 +94,4 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-
-    // Добавляем поддержку переключателя режимов в мобильном меню
-    const modeSwitch = document.querySelector('.mode-switch');
-    if (modeSwitch && window.innerWidth <= 768) {
-        // Помещаем переключатель в мобильное меню
-        const navMenu = document.querySelector('.nav-menu');
-        if (navMenu) {
-            const modeSwitchItem = document.createElement('li');
-            modeSwitchItem.className = 'nav-menu-mode-switch';
-            modeSwitchItem.appendChild(modeSwitch.cloneNode(true));
-            navMenu.appendChild(modeSwitchItem);
-            
-            // Удаляем оригинальный переключатель
-            modeSwitch.parentNode.removeChild(modeSwitch);
-            
-            // Настраиваем обработчики для клонированного переключателя
-            const learningBtn = navMenu.querySelector('.mode-switch__button--learning');
-            const controlBtn = navMenu.querySelector('.mode-switch__button--control');
-            
-            if (learningBtn && controlBtn) {
-                learningBtn.addEventListener('click', function() {
-                    document.dispatchEvent(new CustomEvent('modeChanged', { detail: { mode: 'learning' } }));
-                    learningBtn.classList.add('active');
-                    controlBtn.classList.remove('active');
-                });
-                
-                controlBtn.addEventListener('click', function() {
-                    document.dispatchEvent(new CustomEvent('modeChanged', { detail: { mode: 'control' } }));
-                    controlBtn.classList.add('active');
-                    learningBtn.classList.remove('active');
-                });
-            }
-        }
-    }
 });

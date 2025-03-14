@@ -1,128 +1,168 @@
 import BaseModule from '../core/base-module.js';
 
 class CityContentManager extends BaseModule {
-    constructor(app) {
-        super(app);
-        this.currentMode = 'learning';
-        this.cityId = null;
-        this.isLoaded = {
-            learning: false,
-            control: false
-        };
-    }
-    
     init() {
-        // Получаем ID города из URL
+        // Подписываемся на изменение режима
+        document.addEventListener('mode-changed', this.handleModeChange.bind(this));
+        
+        // Применяем текущий режим при инициализации
+        this.applyCurrentMode();
+    }
+    
+    // Обработчик изменения режима
+    handleModeChange(event) {
+        const { mode } = event.detail;
+        this.updateCityContent(mode);
+    }
+    
+    // Применение текущего режима
+    applyCurrentMode() {
+        const currentMode = this.state.get('app.mode') || 'learning';
+        this.updateCityContent(currentMode);
+    }
+    
+    // Обновление содержимого города в зависимости от режима
+    updateCityContent(mode) {
+        // Получаем текущий город из URL, если мы на странице города
         const urlParams = new URLSearchParams(window.location.search);
-        this.cityId = urlParams.get('id');
+        const cityId = urlParams.get('id');
         
-        if (!this.cityId) {
-            console.error('ID города не найден в URL');
-            return;
+        if (!cityId) return; // Не на странице города
+        
+        // Получаем контейнеры контента для разных режимов
+        const learningContent = this.dom.find('.city-content-learning');
+        const controlContent = this.dom.find('.city-content-control');
+        
+        if (learningContent && controlContent) {
+            // Переключаем видимость контента
+            if (mode === 'learning') {
+                this.dom.addClass(learningContent, 'active');
+                this.dom.removeClass(controlContent, 'active');
+            } else {
+                this.dom.removeClass(learningContent, 'active');
+                this.dom.addClass(controlContent, 'active');
+            }
         }
         
-        // Подписываемся на событие изменения режима
-        document.addEventListener('modeChanged', (event) => {
-            this.currentMode = event.detail.mode;
-            this.loadContentForMode(this.currentMode);
-        });
-        
-        // Загружаем содержимое для текущего режима
-        this.currentMode = localStorage.getItem('currentMode') || 'learning';
-        this.loadContentForMode(this.currentMode);
+        // Загружаем контент для текущего режима, если его еще нет
+        this.loadCityContentForMode(cityId, mode);
     }
     
-    loadContentForMode(mode) {
-        if (this.isLoaded[mode]) return;
-        
-        const container = document.querySelector(`.city-content-${mode}`);
-        if (!container) {
-            console.error(`Контейнер для режима ${mode} не найден`);
-            return;
-        }
-        
-        const loadingIndicator = container.querySelector('.loading-indicator');
-        if (loadingIndicator) {
-            loadingIndicator.textContent = `Загрузка содержимого для режима '${mode === 'learning' ? 'обучающий' : 'контрольный'}'...`;
-        }
-        
-        // Имитируем загрузку данных
-        setTimeout(() => {
-            this.renderContent(mode, container);
-            this.isLoaded[mode] = true;
-        }, 1000);
-    }
-    
-    renderContent(mode, container) {
-        const dataService = this.getService('data');
-        
-        if (mode === 'learning') {
-            container.innerHTML = `
-                <section class="city-info">
-                    <h2>О городе ${this.cityId}</h2>
-                    <p>Подробная информация о городе в обучающем режиме...</p>
-                </section>
-                <section class="city-history">
-                    <h2>История</h2>
-                    <p>Историческая справка о городе...</p>
-                </section>
-                <section class="landmarks-section">
-                    <h2>Достопримечательности</h2>
-                    <div class="landmarks-grid">
-                        <!-- Карточки достопримечательностей будут здесь -->
-                    </div>
-                </section>
-            `;
-        } else {
-            container.innerHTML = `
-                <section class="city-quiz">
-                    <h2>Проверка знаний о городе ${this.cityId}</h2>
-                    <div class="quiz-container">
-                        <div class="quiz-item">
-                            <p class="quiz-question">Вопрос 1: В каком году был основан город?</p>
-                            <div class="quiz-options">
-                                <label class="option-item"><input type="radio" name="q1" value="1"> 1725</label>
-                                <label class="option-item"><input type="radio" name="q1" value="2"> 1840</label>
-                                <label class="option-item"><input type="radio" name="q1" value="3"> 1932</label>
-                            </div>
-                            <button class="check-answer-btn">Проверить</button>
-                            <div class="answer-feedback"></div>
-                        </div>
-                        <!-- Другие вопросы -->
-                    </div>
-                </section>
-            `;
+    // Загрузка контента города для выбранного режима
+    async loadCityContentForMode(cityId, mode) {
+        try {
+            // Используем сервис данных для получения контента
+            const dataService = this.getService('data');
             
-            // Добавляем обработчики для проверки ответов
-            const quizButtons = container.querySelectorAll('.check-answer-btn');
-            quizButtons.forEach(button => {
-                this.addDOMListener(button, 'click', this.checkAnswer.bind(this));
-            });
+            // Получаем данные города
+            const cities = await dataService.getCities();
+            const city = cities.find(c => c.id === cityId);
+            
+            if (!city) return;
+            
+            // Получаем контейнер для контента текущего режима
+            const contentSelector = `.city-content-${mode}`;
+            const contentContainer = this.dom.find(contentSelector);
+            
+            if (!contentContainer) return;
+            
+            // Проверяем, загружен ли уже контент для этого режима
+            if (contentContainer.dataset.loaded === 'true') return;
+            
+            // Получаем данные контента для текущего режима
+            let modeContent;
+            if (mode === 'learning') {
+                modeContent = city.learningContent || {};
+            } else {
+                modeContent = city.controlContent || {};
+            }
+            
+            // Формируем HTML для контента
+            const contentHTML = this.generateCityContentHTML(modeContent, mode);
+            
+            // Обновляем контейнер
+            this.dom.setContent(contentContainer, contentHTML);
+            
+            // Отмечаем контент как загруженный
+            contentContainer.dataset.loaded = 'true';
+            
+        } catch (error) {
+            console.error('Ошибка загрузки контента города:', error);
         }
     }
     
-    checkAnswer(event) {
-        const button = event.target;
-        const quizItem = button.closest('.quiz-item');
-        const selectedOption = quizItem.querySelector('input[type="radio"]:checked');
-        const feedback = quizItem.querySelector('.answer-feedback');
-        
-        if (!selectedOption) {
-            feedback.textContent = 'Пожалуйста, выберите ответ';
-            feedback.className = 'answer-feedback';
-            return;
+    // Генерация HTML для контента города
+    generateCityContentHTML(content, mode) {
+        if (!content || Object.keys(content).length === 0) {
+            return `
+                <div class="empty-content">
+                    <p>Контент для ${mode === 'learning' ? 'обучающего' : 'контрольного'} режима находится в разработке.</p>
+                </div>
+            `;
         }
         
-        // В реальном приложении здесь будет проверка правильности ответа
-        const isCorrect = selectedOption.value === '2'; // Предположим, что правильный ответ - второй вариант
-        
-        if (isCorrect) {
-            feedback.textContent = 'Правильно!';
-            feedback.className = 'answer-feedback correct';
-        } else {
-            feedback.textContent = 'Неправильно. Попробуйте еще раз.';
-            feedback.className = 'answer-feedback incorrect';
+        // Шаблон для обучающего режима
+        if (mode === 'learning') {
+            return `
+                <div class="learning-content">
+                    <div class="content-section">
+                        <h3>История города</h3>
+                        <div class="content-text">${content.history || 'Информация отсутствует'}</div>
+                    </div>
+                    
+                    <div class="content-section">
+                        <h3>Интересные факты</h3>
+                        <ul class="facts-list">
+                            ${(content.facts || []).map(fact => `<li>${fact}</li>`).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div class="content-section">
+                        <h3>Образовательные материалы</h3>
+                        <div class="educational-content">${content.educational || 'Материалы в разработке'}</div>
+                    </div>
+                </div>
+            `;
         }
+        
+        // Шаблон для контрольного режима
+        return `
+            <div class="control-content">
+                <div class="content-section">
+                    <h3>Тестовые задания</h3>
+                    <div class="quiz-container">${this.generateQuizHTML(content.quizzes || [])}</div>
+                </div>
+                
+                <div class="content-section">
+                    <h3>Интерактивные задания</h3>
+                    <div class="interactive-tasks">${content.interactiveTasks || 'Задания в разработке'}</div>
+                </div>
+            </div>
+        `;
+    }
+    
+    // Генерация HTML для квизов
+    generateQuizHTML(quizzes) {
+        if (!quizzes.length) {
+            return '<p>Тесты в разработке</p>';
+        }
+        
+        return quizzes.map((quiz, index) => `
+            <div class="quiz-item" data-quiz-id="${index}">
+                <h4 class="quiz-question">${quiz.question}</h4>
+                <div class="quiz-options">
+                    ${quiz.options.map((option, optIndex) => `
+                        <div class="option-item">
+                            <input type="radio" id="quiz${index}_option${optIndex}" 
+                                   name="quiz${index}" value="${optIndex}">
+                            <label for="quiz${index}_option${optIndex}">${option}</label>
+                        </div>
+                    `).join('')}
+                </div>
+                <button class="check-answer-btn">Проверить ответ</button>
+                <div class="answer-feedback"></div>
+            </div>
+        `).join('<hr>');
     }
 }
 
