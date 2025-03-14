@@ -1,72 +1,68 @@
-import BaseModule from '../core/base-module.js';
-
-class ModeSwitch extends BaseModule {
-    constructor(app) {
-        super(app);
-        this.currentMode = 'learning'; // По умолчанию - обучающий режим
+// Модуль переключения режимов обучения и контроля
+export default class ModeSwitch {
+    constructor() {
+        this.currentMode = localStorage.getItem('currentMode') || 'learning';
+        this.descriptions = {
+            learning: {
+                title: 'Обучающий режим',
+                text: 'В обучающем режиме вы сможете изучить историю и географию городов ХМАО-Югры, познакомиться с их достопримечательностями и культурными особенностями.'
+            },
+            control: {
+                title: 'Контрольный режим',
+                text: 'В контрольном режиме вы сможете проверить свои знания через тесты и интерактивные задания. Зарабатывайте баллы и открывайте новые города.'
+            }
+        };
     }
 
     init() {
-        // Получаем элементы переключателя
+        // Находим кнопки переключения режимов
         this.learningBtn = document.querySelector('.mode-switch__button--learning');
         this.controlBtn = document.querySelector('.mode-switch__button--control');
         
-        // Получаем контейнеры содержимого
-        this.learningContent = document.querySelector('.content-learning');
-        this.controlContent = document.querySelector('.content-control');
+        // Находим элементы для отображения описания режима
+        this.modeTitle = document.querySelector('.mode-description-title');
+        this.modeText = document.querySelector('.mode-description-text');
         
-        // Если не нашли ни одной кнопки, значит на этой странице нет переключателя
         if (!this.learningBtn || !this.controlBtn) {
-            console.log('Переключатель режимов не найден на этой странице');
+            console.log('Элементы переключения режимов не найдены на странице');
             return;
         }
         
-        // Добавляем обработчики событий
-        this.addDOMListener(this.learningBtn, 'click', () => this.switchToMode('learning'));
-        this.addDOMListener(this.controlBtn, 'click', () => this.switchToMode('control'));
+        // Добавляем обработчики событий на кнопки
+        this.learningBtn.addEventListener('click', () => this.switchMode('learning'));
+        this.controlBtn.addEventListener('click', () => this.switchMode('control'));
         
-        // Используем сохраненный режим или режим по умолчанию
-        const savedMode = localStorage.getItem('currentMode') || 'learning';
-        this.switchToMode(savedMode);
+        // Устанавливаем начальный режим
+        this.switchMode(this.currentMode);
         
         console.log('Модуль переключения режимов инициализирован');
     }
     
-    // Переключение режима
-    switchToMode(mode) {
+    // Метод переключения режима
+    switchMode(mode) {
         this.currentMode = mode;
-        
-        // Сохраняем выбранный режим
         localStorage.setItem('currentMode', mode);
         
-        // Обновляем кнопки
-        if (this.learningBtn && this.controlBtn) {
-            if (mode === 'learning') {
-                this.learningBtn.classList.add('active');
-                this.controlBtn.classList.remove('active');
-            } else {
-                this.learningBtn.classList.remove('active');
-                this.controlBtn.classList.add('active');
-            }
+        // Обновляем активный класс кнопок
+        if (mode === 'learning') {
+            this.learningBtn.classList.add('active');
+            this.controlBtn.classList.remove('active');
+        } else {
+            this.learningBtn.classList.remove('active');
+            this.controlBtn.classList.add('active');
         }
         
-        // Обновляем видимость контента
-        document.querySelectorAll('.content-learning, .content-control').forEach(container => {
-            container.classList.remove('active');
-        });
+        // Обновляем текст описания режима
+        if (this.modeTitle && this.modeText) {
+            this.modeTitle.textContent = this.descriptions[mode].title;
+            this.modeText.textContent = this.descriptions[mode].text;
+        }
         
-        // Активируем соответствующий контент на основе текущего режима
-        const activeContainers = document.querySelectorAll(`.content-${mode}`);
-        activeContainers.forEach(container => {
-            container.classList.add('active');
-        });
-        
-        // Отправляем событие о смене режима
-        const event = new CustomEvent('modeChanged', { detail: { mode } });
-        document.dispatchEvent(event);
+        // Отправляем событие смены режима
+        document.dispatchEvent(new CustomEvent('modeChanged', {
+            detail: { mode: mode }
+        }));
         
         console.log(`Режим переключен на: ${mode}`);
     }
 }
-
-export default ModeSwitch;
