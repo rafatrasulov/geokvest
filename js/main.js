@@ -94,24 +94,77 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('Контейнер обучения:', learningContent);
     console.log('Контейнер контроля:', controlContent);
 
-    // Ручное переключение для проверки
-    function manualSwitchToLearning() {
-        learningBtn.classList.add('active');
-        controlBtn.classList.remove('active');
-        learningContent.classList.add('active');
-        controlContent.classList.remove('active');
-        console.log('Переключено на обучающий режим вручную');
-    }
+    document.addEventListener('modeChanged', function(event) {
+        const mode = event.detail.mode;
+        console.log(`Режим изменен на: ${mode}`);
+        
+        // Здесь можно добавить дополнительную логику при изменении режима
+        // Например, загрузку соответствующих данных для текущего режима
+        
+        // Пример загрузки данных для города, если мы на странице города
+        const currentPage = window.location.pathname.split('/').pop();
+        if (currentPage === 'city.html') {
+            const cityId = new URLSearchParams(window.location.search).get('id');
+            if (cityId) {
+                loadCityData(cityId, mode);
+            }
+        }
+    });
 
-    function manualSwitchToControl() {
-        learningBtn.classList.remove('active');
-        controlBtn.classList.add('active');
-        learningContent.classList.remove('active');
-        controlContent.classList.add('active');
-        console.log('Переключено на контрольный режим вручную');
+    // Функция загрузки данных города в зависимости от режима
+    function loadCityData(cityId, mode) {
+        const dataService = app.getService('data');
+        const contentContainer = document.querySelector(`.city-content-${mode}`);
+        
+        if (contentContainer && contentContainer.getAttribute('data-loaded') === 'false') {
+            contentContainer.innerHTML = '<div class="loading-indicator">Загрузка данных...</div>';
+            
+            // Имитация загрузки данных (в реальном приложении здесь будет запрос к API)
+            setTimeout(() => {
+                let content = '';
+                
+                if (mode === 'learning') {
+                    content = `
+                        <div class="content-section">
+                            <h3>Об этом городе</h3>
+                            <p>Информационный текст о городе ${cityId} для обучающего режима...</p>
+                        </div>
+                        <div class="content-section">
+                            <h3>История</h3>
+                            <p>Историческая справка о городе...</p>
+                        </div>
+                        <div class="landmarks-section">
+                            <h3>Достопримечательности</h3>
+                            <div class="landmarks-grid">
+                                <!-- Здесь будут достопримечательности -->
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    content = `
+                        <div class="content-section">
+                            <h3>Тестирование знаний</h3>
+                            <div class="quiz-container">
+                                <h4>Проверьте, насколько хорошо вы знаете город ${cityId}</h4>
+                                <div class="quiz-item">
+                                    <p class="quiz-question">Вопрос 1: В каком году был основан город?</p>
+                                    <div class="quiz-options">
+                                        <label class="option-item"><input type="radio" name="q1" value="1"> 1725</label>
+                                        <label class="option-item"><input type="radio" name="q1" value="2"> 1840</label>
+                                        <label class="option-item"><input type="radio" name="q1" value="3"> 1932</label>
+                                    </div>
+                                    <button class="check-answer-btn">Проверить</button>
+                                    <div class="answer-feedback"></div>
+                                </div>
+                                <!-- Другие вопросы -->
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                contentContainer.innerHTML = content;
+                contentContainer.setAttribute('data-loaded', 'true');
+            }, 1000);
+        }
     }
-
-    // Можно вызвать в консоли
-    // manualSwitchToLearning();
-    // manualSwitchToControl();
 });

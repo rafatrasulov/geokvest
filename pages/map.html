@@ -23,17 +23,39 @@
     </header>
 
     <main class="main">
-        <div class="map-container">
-            <div id="map"></div>
+        <div class="mode-switch">
+            <div class="mode-switch__container">
+                <button class="mode-switch__button mode-switch__button--learning active">Обучающий режим</button>
+                <button class="mode-switch__button mode-switch__button--control">Контрольный режим</button>
+            </div>
+        </div>
+
+        <div class="map-container content-learning active">
+            <div id="map-learning"></div>
             <div class="map-sidebar">
-                <h2>Города ХМАО-Югры</h2>
+                <h2>Города ХМАО-Югры (Обучающий режим)</h2>
                 <div class="city-list">
-                    <!-- Здесь будет список городов -->
+                    <!-- Здесь будет список городов для обучающего режима -->
                 </div>
                 <div class="unlock-code">
                     <h3>Разблокировать город</h3>
                     <input type="text" id="unlockCode" placeholder="Введите код">
                     <button id="unlockButton">Разблокировать</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="map-container content-control">
+            <div id="map-control"></div>
+            <div class="map-sidebar">
+                <h2>Города ХМАО-Югры (Контрольный режим)</h2>
+                <div class="city-list">
+                    <!-- Здесь будет список городов для контрольного режима -->
+                </div>
+                <div class="unlock-code">
+                    <h3>Разблокировать город</h3>
+                    <input type="text" id="unlockCodeControl" placeholder="Введите код">
+                    <button id="unlockButtonControl">Разблокировать</button>
                 </div>
             </div>
         </div>
