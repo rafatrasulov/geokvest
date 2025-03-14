@@ -167,8 +167,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 1000);
         }
     }
-
-    // Инициализируем модуль переключения режимов
-    const modeSwitch = new ModeSwitch();
-    modeSwitch.init();
 });
