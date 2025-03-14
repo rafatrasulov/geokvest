@@ -80,4 +80,38 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Сохраняем ссылку на приложение в глобальном объекте для отладки
     window.app = app;
+
+    // Для отладки 
+    console.log('Проверка кнопок:');
+    const learningBtn = document.querySelector('.mode-switch__button--learning');
+    const controlBtn = document.querySelector('.mode-switch__button--control');
+    console.log('Кнопка обучения:', learningBtn);
+    console.log('Кнопка контроля:', controlBtn);
+
+    console.log('Проверка контейнеров:');
+    const learningContent = document.querySelector('.city-content-learning');
+    const controlContent = document.querySelector('.city-content-control');
+    console.log('Контейнер обучения:', learningContent);
+    console.log('Контейнер контроля:', controlContent);
+
+    // Ручное переключение для проверки
+    function manualSwitchToLearning() {
+        learningBtn.classList.add('active');
+        controlBtn.classList.remove('active');
+        learningContent.classList.add('active');
+        controlContent.classList.remove('active');
+        console.log('Переключено на обучающий режим вручную');
+    }
+
+    function manualSwitchToControl() {
+        learningBtn.classList.remove('active');
+        controlBtn.classList.add('active');
+        learningContent.classList.remove('active');
+        controlContent.classList.add('active');
+        console.log('Переключено на контрольный режим вручную');
+    }
+
+    // Можно вызвать в консоли
+    // manualSwitchToLearning();
+    // manualSwitchToControl();
 });
