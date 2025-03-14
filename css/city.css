@@ -176,27 +176,15 @@
     }
 }
 
-/* Стили для переключения содержимого */
+/* Стили для контейнеров контента режимов */
 .city-content-learning,
 .city-content-control {
     display: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
 }
 
 .city-content-learning.active,
 .city-content-control.active {
     display: block;
-    opacity: 1;
-}
-
-/* Отладочные стили */
-.mode-switch__button {
-    border: 2px solid transparent;
-}
-
-.mode-switch__button.active {
-    border-color: red;
 }
 
 /* Индикатор загрузки */
