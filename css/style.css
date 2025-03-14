@@ -312,3 +312,59 @@ body {
         max-width: 100%;
     }
 }
+
+/* Стили для секции описания режимов */
+.mode-description {
+    padding: 3rem 0;
+    background-color: #f8f9fa;
+}
+
+.mode-content {
+    display: none;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 1.5rem;
+}
+
+.mode-content.active {
+    display: block;
+}
+
+.mode-goals {
+    list-style: none;
+    padding-left: 0;
+    margin: 1.5rem 0;
+}
+
+.mode-goals li {
+    position: relative;
+    padding-left: 1.8rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+}
+
+.mode-goals li::before {
+    content: "✓";
+    color: #4CAF50;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+.mode-description-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    margin-top: 1.5rem;
+}
+
+/* Стили для режимов */
+.mode-content--learning h3 {
+    color: #2196F3;
+}
+
+.mode-content--control h3 {
+    color: #FF5722;
+}

@@ -26,6 +26,13 @@
     </header>
 
     <main class="main">
+        <div class="mode-switch">
+            <div class="mode-switch__container">
+                <button class="mode-switch__button mode-switch__button--learning active">Обучающий режим</button>
+                <button class="mode-switch__button mode-switch__button--control">Контрольный режим</button>
+            </div>
+        </div>
+
         <div class="city-container">
             <div class="city-header">
                 <h1 class="city-title">Загрузка...</h1>
@@ -42,23 +49,15 @@
             </div>
 
             <div class="city-content">
-                <div class="city-description">
-                    <p>Загрузка описания...</p>
+                <!-- Контейнер для обучающего режима -->
+                <div class="city-content-learning active" data-loaded="false">
+                    <div class="loading-indicator">Загрузка содержимого обучающего режима...</div>
                 </div>
-
-                <section class="landmarks-section">
-                    <h2>Достопримечательности</h2>
-                    <div class="landmarks-grid">
-                        <!-- Здесь будут карточки достопримечательностей -->
-                    </div>
-                </section>
-
-                <section class="quests-section">
-                    <h2>Доступные квесты</h2>
-                    <div class="quests-grid">
-                        <!-- Здесь будут карточки квестов -->
-                    </div>
-                </section>
+                
+                <!-- Контейнер для контрольного режима -->
+                <div class="city-content-control" data-loaded="false">
+                    <div class="loading-indicator">Загрузка содержимого контрольного режима...</div>
+                </div>
             </div>
         </div>
     </main>
@@ -75,5 +74,7 @@
             </div>
         </div>
     </footer>
+
+    <script type="module" src="../../js/main.js"></script>
 </body>
 </html> 

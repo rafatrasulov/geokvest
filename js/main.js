@@ -14,6 +14,7 @@ import ModeSwitch from './modules/mode-switch.js';
 import MobileMenuModule from './modules/mobile-menu.js';
 import CollapsibleSectionsModule from './modules/collapsible-sections.js';
 import CityModule from './modules/city.js';
+import CityContentManager from './modules/city-content-manager.js';
 
 // Конфигурация
 import settings from './data/settings.js';
@@ -45,8 +46,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Регистрируем модули в зависимости от текущей страницы
     const currentPage = window.location.pathname.split('/').pop();
     
+    // Регистрируем модуль режимов на всех страницах
+    app.registerModule('modeSwitch', ModeSwitch);
+    
     if (currentPage === 'city.html') {
         app.registerModule('city', CityModule);
+        app.registerModule('cityContentManager', CityContentManager);
     }
     
     // Инициализируем приложение
