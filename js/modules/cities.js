@@ -46,7 +46,7 @@ const CitiesModule = {
 
             const cityId = cityCard.dataset.cityId;
             if (cityId === 'khanty-mansiysk') {
-                window.location.href = `pages/cities/city.html?id=${cityId}`;
+                window.location.href = `https://view.genially.com/67d7de5c5ae072424a4978da/interactive-content-hanty-mansijsk?id=${cityId}`;
             }
         });
     }
