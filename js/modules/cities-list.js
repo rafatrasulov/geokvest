@@ -34,7 +34,7 @@ const CitiesListModule = {
                     ` : ''}
                     <div class="city-actions">
                         ${city.id === 'khanty-mansiysk' ? 
-                            `<a href="cities/city.html?id=${city.id}" class="city-button primary">Исследовать</a>` :
+                            `<a href="https://view.genially.com/67d7de5c5ae072424a4978da/interactive-content-hanty-mansijsk?id=${city.id}" class="city-button primary">Исследовать</a>` :
                             `<button class="city-button secondary" disabled>Скоро будет доступно</button>`
                         }
                     </div>
