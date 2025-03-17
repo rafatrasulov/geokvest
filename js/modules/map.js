@@ -50,7 +50,7 @@ const MapModule = {
             <div class="city-popup">
                 <h3>${city.name}</h3>
                 ${isUnlocked ? 
-                    `<a href="cities/city.html?id=${city.id}" class="city-button">Исследовать</a>` :
+                    `<a href="https://view.genially.com/67d7de5c5ae072424a4978da/interactive-content-hanty-mansijsk?id=${city.id}" class="city-button">Исследовать</a>` :
                     '<p class="locked-message">Город заблокирован</p>'
                 }
             </div>
@@ -82,7 +82,7 @@ const MapModule = {
 
                 const cityId = cityItem.dataset.cityId;
                 if (this.unlockedCities.has(cityId)) {
-                    window.location.href = `cities/city.html?id=${cityId}`;
+                    window.location.href = `https://view.genially.com/67d7de5c5ae072424a4978da/interactive-content-hanty-mansijsk?id=${cityId}`;
                 }
             });
         }
